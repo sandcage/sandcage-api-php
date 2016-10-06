@@ -1,0 +1,62 @@
+<?php 
+
+include_once(dirname(dirname(__FILE__)) . '/SandCage.php');
+
+$sandcage = new SandCage;
+
+$payload = array(
+	'jobs'=>array(
+		array(
+			'url'=>'http://cdn.sandcage.com/p/a/img/logo.jpg',
+			'tasks'=>array(
+				array(
+					'actions'=>'save'
+				),
+				array(
+					'actions'=>'resize',
+					'filename'=>'hello_world.png',
+					'width'=>200
+				),
+				array(
+					'actions'=>'crop',
+					'coords'=>'10,10,50,50'
+				),
+				array(
+					'reference_id'=>'1234567890',
+					'actions'=>'rotate',
+					'degrees'=>90
+				),
+				array(
+					'actions'=>'cover',
+					'width'=>60,
+					'height'=>60,
+					'cover'=>'middle,center'
+
+				)
+			)
+		),
+		array(
+			'url'=>'http://cdn.sandcage.com/p/a/img/header_404.png',
+			'tasks'=>array(
+				array(
+					'actions'=>'resize',
+					'height'=>30
+				)
+			)
+		)
+	)
+);
+
+// NOTE | Add the callback to the example
+
+$sandcage->scheduleFiles($payload);
+$get_info_status = $sandcage->getHttpStatus();
+$get_info_response = $sandcage->getResponse();
+
+if ( $get_info_status['http_code'] == 200 ) {
+	echo $get_info_response;
+} else {
+	echo "An error occured.";
+}
+
+?>
