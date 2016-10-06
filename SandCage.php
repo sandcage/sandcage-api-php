@@ -1,7 +1,7 @@
 <?php 
 
 class SandCage {
-	// Your SandCage API Token
+	// Your SandCage API Key
 	// This can be retrieved from https://www.sandcage.com/panel/api_key
 	protected $sandcage_api_key = '[YOUR SANDCAGE API KEY]';
 	
@@ -29,26 +29,36 @@ class SandCage {
 	/** 
 	* The "schedule-tasks" service
 	* @param array $payload values to send
+	* @param string $callback_endpoint to send the callback to
 	*/ 
-	public function scheduleFiles($payload) {
+	public function scheduleFiles($payload, $callback_endpoint='') {
 
 		$this->post = true;
 		$this->post_fields = array('key'=>$this->sandcage_api_key) + $payload;
 
-		$this->cURL($this->sandcage_api_endpoint_base . 'schedule-tasks');
+		if ( $callback_endpoint != '' ) {
+			$this->post_fields['callback_url'] = $callback_endpoint;
+		}
+
+		$this->call($this->sandcage_api_endpoint_base . 'schedule-tasks');
 
 	}
 
 	/** 
 	* The "destroy-files" service
 	* @param array $payload values to send
+	* @param string $callback_endpoint to send the callback to
 	*/ 
-	public function destroyFiles($payload) {
+	public function destroyFiles($payload, $callback_endpoint='') {
 
 		$this->post = true;
 		$this->post_fields = array('key'=>$this->sandcage_api_key) + $payload;
 
-		$this->cURL($this->sandcage_api_endpoint_base . 'destroy-files');
+		if ( $callback_endpoint != '' ) {
+			$this->post_fields['callback_url'] = $callback_endpoint;
+		}
+
+		$this->call($this->sandcage_api_endpoint_base . 'destroy-files');
 
 	}
 
@@ -61,7 +71,7 @@ class SandCage {
 		$this->post = true;
 		$this->post_fields = array('key'=>$this->sandcage_api_key) + $payload;
 
-		$this->cURL($this->sandcage_api_endpoint_base . 'list-files');
+		$this->call($this->sandcage_api_endpoint_base . 'list-files');
 
 	}
 
@@ -74,7 +84,7 @@ class SandCage {
 		$this->post = true;
 		$this->post_fields = array('key'=>$this->sandcage_api_key) + $payload;
 
-		$this->cURL($this->sandcage_api_endpoint_base . 'get-info');
+		$this->call($this->sandcage_api_endpoint_base . 'get-info');
 
 	}
 
@@ -82,7 +92,7 @@ class SandCage {
 	* Send a requst using cURL 
 	* @param string $service_endpoint to request
 	*/ 
-	public function cURL($service_endpoint) {
+	public function call($service_endpoint) {
 
 		// Initialize the cURL session
 		$ch = curl_init($service_endpoint);
