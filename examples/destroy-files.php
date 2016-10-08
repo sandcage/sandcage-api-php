@@ -6,7 +6,8 @@ $sandcage = new SandCage;
 
 $payload = array(
 	'files' => array(
-		array('reference_id' => '[reference_id]')
+		array('reference_id' => '[reference_id]'),
+		array('file_token' => '[file_token]')
 	)
 );
 

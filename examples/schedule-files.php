@@ -14,7 +14,7 @@ $payload = array(
 				),
 				array(
 					'actions'=>'resize',
-					'filename'=>'hello_world.png',
+					'filename'=>'hello_world.jpg',
 					'width'=>200
 				),
 				array(
