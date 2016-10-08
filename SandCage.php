@@ -27,10 +27,10 @@ class SandCage {
 	}
 
 	/** 
-	* The "schedule-tasks" service
-	* @param array $payload values to send
-	* @param string $callback_endpoint to send the callback to
-	*/ 
+	 * The "schedule-tasks" service
+	 * @param array $payload values to send
+	 * @param string $callback_endpoint to send the callback to
+	 */ 
 	public function scheduleFiles($payload, $callback_endpoint='') {
 
 		$this->post = true;
@@ -45,10 +45,10 @@ class SandCage {
 	}
 
 	/** 
-	* The "destroy-files" service
-	* @param array $payload values to send
-	* @param string $callback_endpoint to send the callback to
-	*/ 
+	 * The "destroy-files" service
+	 * @param array $payload values to send
+	 * @param string $callback_endpoint to send the callback to
+	 */ 
 	public function destroyFiles($payload, $callback_endpoint='') {
 
 		$this->post = true;
@@ -63,9 +63,9 @@ class SandCage {
 	}
 
 	/** 
-	* The "list-files" service
-	* @param array $payload values to send
-	*/ 
+	 * The "list-files" service
+	 * @param array $payload values to send
+	 */ 
 	public function listFiles($payload) {
 
 		$this->post = true;
@@ -76,9 +76,9 @@ class SandCage {
 	}
 
 	/** 
-	* The "get-info" service
-	* @param array $payload values to send
-	*/ 
+	 * The "get-info" service
+	 * @param array $payload values to send
+	 */ 
 	public function getInfo($payload) {
 
 		$this->post = true;
@@ -89,9 +89,9 @@ class SandCage {
 	}
 
 	/** 
-	* Send a requst using cURL 
-	* @param string $service_endpoint to request
-	*/ 
+	 * Send a requst using cURL 
+	 * @param string $service_endpoint to request
+	 */ 
 	public function call($service_endpoint) {
 
 		// Initialize the cURL session
@@ -102,7 +102,7 @@ class SandCage {
 		curl_setopt($ch, CURLOPT_TIMEOUT, $this->timeout); 
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 
-		if ( $this->post ) { 
+		if ($this->post) { 
 			curl_setopt($ch, CURLOPT_POST, true); 
 			curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($this->post_fields)); 
 		}
@@ -111,7 +111,7 @@ class SandCage {
 		$this->response = curl_exec($ch);
 
 		// Retry if certificates are missing.
-		if ( curl_errno($ch) == CURLE_SSL_CACERT ) {
+		if (curl_errno($ch) == CURLE_SSL_CACERT) {
 
 			// Set the pem file holding the CA Root Certificates to verify the peer with.
 			curl_setopt($ch, CURLOPT_CAINFO, dirname(__FILE__) . '/cacert.pem');
@@ -130,9 +130,9 @@ class SandCage {
 	}
 
 	/** 
-	* Return the HTTP status of the call
-	* @return array or FALSE on failure 
-	*/ 
+	 * Return the HTTP status of the call
+	 * @return array or FALSE on failure 
+	 */ 
 	public function getHttpStatus() {
 
 		return $this->status;
@@ -140,9 +140,9 @@ class SandCage {
 	}
 
 	/** 
-	* Return the HTTP status of the call
-	* @return array or FALSE on failure  
-	*/ 
+	 * Return the HTTP status of the call
+	 * @return array or FALSE on failure  
+	 */ 
 	public function getResponse() {
 
 		return $this->response;
