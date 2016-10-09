@@ -19,7 +19,7 @@ class SandCage {
 	protected $status;
 	protected $response;
 
-	public function __construct($sandcage_api_key=null) {
+	public function __construct($sandcage_api_key = null) {
 
 		if (!is_null($sandcage_api_key)) {
 			$this->sandcage_api_key = $sandcage_api_key;
@@ -30,11 +30,11 @@ class SandCage {
 	}
 
 	/** 
-	* The "schedule-tasks" service
-	* @param array $payload values to send
-	* @param string $callback_endpoint to send the callback to
-	*/ 
-	public function scheduleFiles($payload, $callback_endpoint='') {
+	 * The "schedule-tasks" service
+	 * @param array $payload values to send
+	 * @param string $callback_endpoint to send the callback to
+	 */ 
+	public function scheduleFiles($payload, $callback_endpoint = '') {
 
 		$this->post = true;
 		$this->post_fields = array('key'=>$this->sandcage_api_key) + $payload;
@@ -48,11 +48,11 @@ class SandCage {
 	}
 
 	/** 
-	* The "destroy-files" service
-	* @param array $payload values to send
-	* @param string $callback_endpoint to send the callback to
-	*/ 
-	public function destroyFiles($payload, $callback_endpoint='') {
+	 * The "destroy-files" service
+	 * @param array $payload values to send
+	 * @param string $callback_endpoint to send the callback to
+	 */ 
+	public function destroyFiles($payload, $callback_endpoint = '') {
 
 		$this->post = true;
 		$this->post_fields = array('key'=>$this->sandcage_api_key) + $payload;
@@ -66,9 +66,9 @@ class SandCage {
 	}
 
 	/** 
-	* The "list-files" service
-	* @param array $payload values to send
-	*/ 
+	 * The "list-files" service
+	 * @param array $payload values to send
+	 */ 
 	public function listFiles($payload) {
 
 		$this->post = true;
@@ -79,9 +79,9 @@ class SandCage {
 	}
 
 	/** 
-	* The "get-info" service
-	* @param array $payload values to send
-	*/ 
+	 * The "get-info" service
+	 * @param array $payload values to send
+	 */ 
 	public function getInfo($payload) {
 
 		$this->post = true;
@@ -92,9 +92,9 @@ class SandCage {
 	}
 
 	/** 
-	* Send a requst using cURL 
-	* @param string $service_endpoint to request
-	*/ 
+	 * Send a requst using cURL 
+	 * @param string $service_endpoint to request
+	 */ 
 	public function call($service_endpoint) {
 
 		// Initialize the cURL session
@@ -133,9 +133,9 @@ class SandCage {
 	}
 
 	/** 
-	* Return the HTTP status of the call
-	* @return array or FALSE on failure 
-	*/ 
+	 * Return the HTTP status of the call
+	 * @return array or FALSE on failure 
+	 */ 
 	public function getHttpStatus() {
 
 		return $this->status;
@@ -143,14 +143,12 @@ class SandCage {
 	}
 
 	/** 
-	* Return the HTTP status of the call
-	* @return array or FALSE on failure  
-	*/ 
+	 * Return the HTTP status of the call
+	 * @return array or FALSE on failure  
+	 */ 
 	public function getResponse() {
 
 		return $this->response;
 
 	}
 }
-
-?>

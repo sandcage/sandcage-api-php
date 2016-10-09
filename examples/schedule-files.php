@@ -57,5 +57,3 @@ if ($get_info_status['http_code'] == 200) {
 } else {
 	echo "An error occured.";
 }
-
-?>

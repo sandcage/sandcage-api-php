@@ -17,6 +17,3 @@ if ($list_files_status['http_code'] == 200) {
 } else {
 	echo "An error occured.";
 }
-
-
-?>
