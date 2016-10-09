@@ -19,8 +19,11 @@ class SandCage {
 	protected $status;
 	protected $response;
 
-	public function __construct() {
+	public function __construct($sandcage_api_key=null) {
 
+		if (!is_null($sandcage_api_key)) {
+			$this->sandcage_api_key = $sandcage_api_key;
+		}
 		$this->sandcage_api_endpoint_base = 'https://api.sandcage.com/' . $this->sandcage_api_version . '/';
 		$this->user_agent = 'SandCage - ' . $this->sandcage_api_version;
 
@@ -36,7 +39,7 @@ class SandCage {
 		$this->post = true;
 		$this->post_fields = array('key'=>$this->sandcage_api_key) + $payload;
 
-		if ( $callback_endpoint != '' ) {
+		if ($callback_endpoint != '') {
 			$this->post_fields['callback_url'] = $callback_endpoint;
 		}
 
@@ -54,7 +57,7 @@ class SandCage {
 		$this->post = true;
 		$this->post_fields = array('key'=>$this->sandcage_api_key) + $payload;
 
-		if ( $callback_endpoint != '' ) {
+		if ($callback_endpoint != '') {
 			$this->post_fields['callback_url'] = $callback_endpoint;
 		}
 
@@ -102,8 +105,8 @@ class SandCage {
 		curl_setopt($ch, CURLOPT_TIMEOUT, $this->timeout); 
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 
-		if ( $this->post ) { 
-			curl_setopt($ch, CURLOPT_POST, true); 
+		if ($this->post) { 
+			curl_setopt($ch, CURLOPT_POST, TRUE); 
 			curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($this->post_fields)); 
 		}
 
@@ -111,7 +114,7 @@ class SandCage {
 		$this->response = curl_exec($ch);
 
 		// Retry if certificates are missing.
-		if ( curl_errno($ch) == CURLE_SSL_CACERT ) {
+		if (curl_errno($ch) == CURLE_SSL_CACERT) {
 
 			// Set the pem file holding the CA Root Certificates to verify the peer with.
 			curl_setopt($ch, CURLOPT_CAINFO, dirname(__FILE__) . '/cacert.pem');
