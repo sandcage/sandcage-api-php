@@ -1,6 +1,6 @@
 filter:
 	excluded_paths:
-		- examples/*
+		- "examples/*"
 checks:
 	php:
 		code_rating: true
