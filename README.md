@@ -1,4 +1,4 @@
-# sandcage-api-php
+![SandCage](https://d18m5nnl28b2pp.cloudfront.net/p/a/img/header.png)
 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/sandcage/sandcage-api-php/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/sandcage/sandcage-api-php/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/sandcage/sandcage-api-php/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/sandcage/sandcage-api-php/?branch=master)
@@ -19,8 +19,9 @@ sandcage-api-php is a PHP library for interfacing with SandCage's API. The API d
 ##Requirements
 
 * A SandCage account, in order to get your SandCage API Key. Once logged into SandCage get your API Key at https://www.sandcage.com/panel/api_key
-* PHP 5.3+
-* PHP Curl extension
+* 5.3+
+* Curl
+* JSON
 
 
 <a name="installation" />
