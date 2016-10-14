@@ -5,13 +5,6 @@
     "type": "library",
     "license": "Apache-2.0",
     "keywords": ["sandcage", "php", "client library", "library", "sdk", "api", "cloud", "image management", "cdn"],
-    "authors": [
-        {
-            "name": "SandCage",
-            "email": "contact@sandcage.com",
-            "url": "https://www.sandcage.com"
-        }
-    ],
     "require": {
         "php": ">=5.3",
         "ext-curl": "*",
