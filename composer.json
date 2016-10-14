@@ -1,0 +1,25 @@
+{
+    "name": "sandcage/sandcage-api-php",
+    "version": "0.2",
+    "description": "PHP client library for SandCage's API",
+    "type": "library",
+    "license": "Apache-2.0",
+    "keywords": ["sandcage", "php", "client library", "library", "sdk", "api", "cloud", "image management", "cdn"],
+    "authors": [
+        {
+            "name": "SandCage",
+            "email": "contact@sandcage.com",
+            "url": "https://www.sandcage.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3",
+        "ext-curl": "*",
+        "ext-json": "*"
+    },
+    "autoload": {
+        "psr-0": {
+            "SandCage": "src"
+        }
+    }
+}

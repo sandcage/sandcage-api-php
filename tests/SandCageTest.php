@@ -1,5 +1,5 @@
 <?php 
-include_once(dirname(dirname(__FILE__)) . '/SandCage.php');
+include_once(dirname(dirname(__FILE__)) . '/src/SandCage.php');
 
 class SandCageTest extends PHPUnit_Framework_TestCase {
 

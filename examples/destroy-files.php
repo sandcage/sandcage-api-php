@@ -1,6 +1,6 @@
 <?php 
 
-include_once(dirname(dirname(__FILE__)) . '/SandCage.php');
+include_once(dirname(dirname(__FILE__)) . '/src/SandCage.php');
 
 $sandcage = new SandCage;
 
