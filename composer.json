@@ -10,6 +10,13 @@
         "ext-curl": "*",
         "ext-json": "*"
     },
+    "authors": [
+        {
+            "name": "SandCage",
+            "homepage": "https://github.com/sandcage/sandcage-api-php/graphs/contributors"
+        }
+    ],
+    "homepage": "https://www.sandcage.com",
     "autoload": {
         "psr-0": {
             "SandCage": "src"
