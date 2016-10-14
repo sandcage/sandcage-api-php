@@ -19,7 +19,7 @@ sandcage-api-php is a PHP library for interfacing with SandCage's API. The API d
 ##Requirements
 
 * A SandCage account, in order to get your SandCage API Key. Once logged into SandCage get your API Key at https://www.sandcage.com/panel/api_key
-* 5.3+
+* 5.3.10+
 * Curl
 * JSON
 
