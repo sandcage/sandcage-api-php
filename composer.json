@@ -1,6 +1,6 @@
 {
     "name": "sandcage/sandcage-api-php",
-    "version": "0.2",
+    "version": "v0.2",
     "description": "PHP client library for SandCage's API",
     "type": "library",
     "license": "Apache-2.0",
@@ -13,9 +13,16 @@
     "authors": [
         {
             "name": "SandCage",
-            "homepage": "https://github.com/sandcage/sandcage-api-php/graphs/contributors"
+            "homepage": "https://github.com/sandcage/sandcage-api-php/graphs/contributors",
+            "role": "Developer"
         }
     ],
+    "support": {
+        "email": "contact@sandcage.com",
+        "issues": "https://www.sandcage.com/contact",
+        "source": "https://github.com/sandcage/sandcage-api-php",
+        "docs": "https://www.sandcage.com/docs/0.2/"
+    },
     "homepage": "https://www.sandcage.com",
     "autoload": {
         "psr-0": {
