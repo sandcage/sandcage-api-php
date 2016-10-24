@@ -15,5 +15,5 @@ $get_info_response = $sandcage->getResponse();
 if ($get_info_status['http_code'] == 200) {
 	echo $get_info_response;
 } else {
-	echo "An error occured.";
+	echo "An error occurred.";
 }

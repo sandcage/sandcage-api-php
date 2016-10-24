@@ -15,5 +15,5 @@ $list_files_response = $sandcage->getResponse();
 if ($list_files_status['http_code'] == 200) {
 	echo $list_files_response;
 } else {
-	echo "An error occured.";
+	echo "An error occurred.";
 }
