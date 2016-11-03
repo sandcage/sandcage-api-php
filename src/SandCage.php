@@ -101,6 +101,11 @@ class SandCage {
 		$ch = curl_init($service_endpoint);
 
 		curl_setopt($ch, CURLOPT_USERAGENT, $this->user_agent);
+
+		// Handle open_basedir & safe mode
+		if (!ini_get('safe_mode') && !ini_get('open_basedir')) {
+			$this->follow_location = false;
+		}
 		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, $this->follow_location);
 		curl_setopt($ch, CURLOPT_TIMEOUT, $this->timeout); 
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
