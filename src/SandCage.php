@@ -12,7 +12,7 @@ class SandCage {
 	protected $sandcage_api_endpoint_base;
 
 	protected $user_agent;
-	protected $follow_location = true;
+	protected $follow_location = false;
 	protected $timeout = 30;
 	protected $post;
 	protected $post_fields;
@@ -104,7 +104,7 @@ class SandCage {
 
 		// Handle open_basedir & safe mode
 		if (!ini_get('safe_mode') && !ini_get('open_basedir')) {
-			$this->follow_location = false;
+			$this->follow_location = true;
 		}
 		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, $this->follow_location);
 		curl_setopt($ch, CURLOPT_TIMEOUT, $this->timeout); 
