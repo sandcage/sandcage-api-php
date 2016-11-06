@@ -14,7 +14,6 @@ class SandCage {
 	protected $user_agent;
 	protected $follow_location = false;
 	protected $timeout = 30;
-	protected $post;
 	protected $post_fields;
 	protected $status;
 	protected $response;
@@ -36,7 +35,6 @@ class SandCage {
 	 */ 
 	public function scheduleFiles($payload, $callback_endpoint = '') {
 
-		$this->post = true;
 		$this->post_fields = array('key'=>$this->sandcage_api_key) + $payload;
 
 		if ($callback_endpoint != '') {
@@ -54,7 +52,6 @@ class SandCage {
 	 */ 
 	public function destroyFiles($payload, $callback_endpoint = '') {
 
-		$this->post = true;
 		$this->post_fields = array('key'=>$this->sandcage_api_key) + $payload;
 
 		if ($callback_endpoint != '') {
@@ -71,7 +68,6 @@ class SandCage {
 	 */ 
 	public function listFiles($payload) {
 
-		$this->post = true;
 		$this->post_fields = array('key'=>$this->sandcage_api_key) + $payload;
 
 		$this->call($this->sandcage_api_endpoint_base . 'list-files');
@@ -84,7 +80,6 @@ class SandCage {
 	 */ 
 	public function getInfo($payload) {
 
-		$this->post = true;
 		$this->post_fields = array('key'=>$this->sandcage_api_key) + $payload;
 
 		$this->call($this->sandcage_api_endpoint_base . 'get-info');
@@ -109,11 +104,8 @@ class SandCage {
 		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, $this->follow_location);
 		curl_setopt($ch, CURLOPT_TIMEOUT, $this->timeout); 
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-
-		if ($this->post) { 
-			curl_setopt($ch, CURLOPT_POST, TRUE); 
-			curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($this->post_fields)); 
-		}
+		curl_setopt($ch, CURLOPT_POST, TRUE);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($this->post_fields));
 
 		// Execute the cURL session
 		$this->response = curl_exec($ch);
@@ -126,7 +118,7 @@ class SandCage {
 			
 			// Retry execution after setting CURLOPT_CAINFO
 			$this->response = curl_exec($ch);
-
+			
 		}
 
 		// Get information regarding the transfer
