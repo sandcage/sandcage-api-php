@@ -4,7 +4,7 @@ include_once(dirname(dirname(__FILE__)) . '/src/SandCage.php');
 
 use SandCage\SandCage;
 
-$sandcage = new SandCage;
+$sandcage = new SandCage::class;
 
 $payload = array();
 

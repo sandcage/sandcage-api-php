@@ -21,3 +21,4 @@ coding_style:
     indentation:
       general:
         use_tabs: true
+build: false
