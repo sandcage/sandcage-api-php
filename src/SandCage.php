@@ -32,27 +32,16 @@ class SandCage {
 
 	/** 
 	 * Send a requst using cURL 
-	 * @param string $service being requested
+	 * @param string $service endpoint to request
 	 * @param array $payload values to send
 	 * @param string $callback_endpoint to send the callback to. Optional
 	 */ 
 	public function call($service, $payload, $callback_endpoint = '') {
 
-		$service_endpoint = $this->sandcage_api_endpoint_base;
-
-		if ($service == 'scheduleTasks') {
-			$service_endpoint .= 'schedule-tasks';
-		} else if ($service == 'destroyFiles') {
-			$service_endpoint .= 'destroy-files';
-		} else if ($service == 'getInfo') {
-			$service_endpoint .= 'get-info';
-		} else if ($service == 'listFiles') {
-			$service_endpoint .= 'list-files';
-		}
-
+		$service_endpoint = $this->sandcage_api_endpoint_base . $service;
 		$this->post_fields = array('key'=>$this->sandcage_api_key) + $payload;
 
-		if ((($service == 'scheduleTasks') || ($service == 'destroyFiles')) && ($callback_endpoint != '')) {
+		if ($callback_endpoint != '') {
 			$this->post_fields['callback_url'] = $callback_endpoint;
 		}
 

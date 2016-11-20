@@ -8,7 +8,7 @@ class SandCageTest extends PHPUnit_Framework_TestCase {
 	public function testListFiles() {
 		$payload = array();
 		$sandcage = new SandCage;
-		$sandcage->call('listFiles', $payload);
+		$sandcage->call('list-files', $payload);
 
 		$list_files_status = $sandcage->getHttpStatus();
 		$list_files_response = json_decode($sandcage->getResponse(), true);
@@ -27,7 +27,7 @@ class SandCageTest extends PHPUnit_Framework_TestCase {
 			'page' => 2
 		);
 		$sandcage = new SandCage;
-		$sandcage->call('listFiles', $payload);
+		$sandcage->call('list-files', $payload);
 
 		$list_files_status = $sandcage->getHttpStatus();
 		$list_files_response = json_decode($sandcage->getResponse(), true);
@@ -47,7 +47,7 @@ class SandCageTest extends PHPUnit_Framework_TestCase {
 			'results_per_page' => 10
 		);
 		$sandcage = new SandCage;
-		$sandcage->call('listFiles', $payload);
+		$sandcage->call('list-files', $payload);
 
 		$list_files_status = $sandcage->getHttpStatus();
 		$list_files_response = json_decode($sandcage->getResponse(), true);
@@ -66,7 +66,7 @@ class SandCageTest extends PHPUnit_Framework_TestCase {
 			'request_id' => '[request_id]'
 		);
 		$sandcage = new SandCage;
-		$sandcage->call('getInfo', $payload);
+		$sandcage->call('get-info', $payload);
 
 		$list_files_status = $sandcage->getHttpStatus();
 		$list_files_response = json_decode($sandcage->getResponse(), true);
@@ -89,7 +89,7 @@ class SandCageTest extends PHPUnit_Framework_TestCase {
 			)
 		);
 		$sandcage = new SandCage;
-		$sandcage->call('getInfo', $payload);
+		$sandcage->call('get-info', $payload);
 
 		$list_files_status = $sandcage->getHttpStatus();
 		$list_files_response = json_decode($sandcage->getResponse(), true);
@@ -147,7 +147,7 @@ class SandCageTest extends PHPUnit_Framework_TestCase {
 			)
 		);
 		$sandcage = new SandCage;
-		$sandcage->call('scheduleTasks', $payload);
+		$sandcage->call('schedule-tasks', $payload);
 
 		$list_files_status = $sandcage->getHttpStatus();
 		$list_files_response = json_decode($sandcage->getResponse(), true);
@@ -169,7 +169,7 @@ class SandCageTest extends PHPUnit_Framework_TestCase {
 			)
 		);
 		$sandcage = new SandCage;
-		$sandcage->call('destroyFiles', $payload);
+		$sandcage->call('destroy-files', $payload);
 
 		$list_files_status = $sandcage->getHttpStatus();
 		$list_files_response = json_decode($sandcage->getResponse(), true);

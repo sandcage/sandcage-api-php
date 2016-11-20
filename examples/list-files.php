@@ -8,7 +8,7 @@ $sandcage = new SandCage;
 
 $payload = array();
 
-$sandcage->call('listFiles', $payload);
+$sandcage->call('list-files', $payload);
 $list_files_status = $sandcage->getHttpStatus();
 $list_files_response = $sandcage->getResponse();
 

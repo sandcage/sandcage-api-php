@@ -13,8 +13,8 @@ $payload = array(
 	)
 );
 
-$sandcage->call('destroyFiles', $payload);
-// $sandcage->call('destroyFiles', $payload, 'http://www.example.com/callback_url'); // Same call with the optional callback endpoint set
+$sandcage->call('destroy-files', $payload);
+// $sandcage->call('destroy-files', $payload, 'http://www.example.com/callback_url'); // Same call with the optional callback endpoint set
 $get_info_status = $sandcage->getHttpStatus();
 $get_info_response = $sandcage->getResponse();
 

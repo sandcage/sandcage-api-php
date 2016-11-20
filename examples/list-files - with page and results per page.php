@@ -11,7 +11,7 @@ $payload = array(
 	'results_per_page' => 10
 );
 
-$sandcage->call('listFiles', $payload);
+$sandcage->call('list-files', $payload);
 $list_files_status = $sandcage->getHttpStatus();
 $list_files_response = $sandcage->getResponse();
 
