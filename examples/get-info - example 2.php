@@ -14,7 +14,7 @@ $payload = array(
 	)
 );
 
-$sandcage->getInfo($payload);
+$sandcage->call('getInfo', $payload);
 $get_info_status = $sandcage->getHttpStatus();
 $get_info_response = $sandcage->getResponse();
 

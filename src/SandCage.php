@@ -31,68 +31,30 @@ class SandCage {
 	}
 
 	/** 
-	 * The "schedule-tasks" service
-	 * @param array $payload values to send
-	 * @param string $callback_endpoint to send the callback to
-	 */ 
-	public function scheduleFiles($payload, $callback_endpoint = '') {
-
-		$this->post_fields = array('key'=>$this->sandcage_api_key) + $payload;
-
-		if ($callback_endpoint != '') {
-			$this->post_fields['callback_url'] = $callback_endpoint;
-		}
-
-		$this->call($this->sandcage_api_endpoint_base . 'schedule-tasks');
-
-	}
-
-	/** 
-	 * The "destroy-files" service
-	 * @param array $payload values to send
-	 * @param string $callback_endpoint to send the callback to
-	 */ 
-	public function destroyFiles($payload, $callback_endpoint = '') {
-
-		$this->post_fields = array('key'=>$this->sandcage_api_key) + $payload;
-
-		if ($callback_endpoint != '') {
-			$this->post_fields['callback_url'] = $callback_endpoint;
-		}
-
-		$this->call($this->sandcage_api_endpoint_base . 'destroy-files');
-
-	}
-
-	/** 
-	 * The "list-files" service
-	 * @param array $payload values to send
-	 */ 
-	public function listFiles($payload) {
-
-		$this->post_fields = array('key'=>$this->sandcage_api_key) + $payload;
-
-		$this->call($this->sandcage_api_endpoint_base . 'list-files');
-
-	}
-
-	/** 
-	 * The "get-info" service
-	 * @param array $payload values to send
-	 */ 
-	public function getInfo($payload) {
-
-		$this->post_fields = array('key'=>$this->sandcage_api_key) + $payload;
-
-		$this->call($this->sandcage_api_endpoint_base . 'get-info');
-
-	}
-
-	/** 
 	 * Send a requst using cURL 
-	 * @param string $service_endpoint to request
+	 * @param string $service being requested
+	 * @param array $payload values to send
+	 * @param string $callback_endpoint to send the callback to. Optional
 	 */ 
-	public function call($service_endpoint) {
+	public function call($service, $payload, $callback_endpoint = '') {
+
+		$service_endpoint = $this->sandcage_api_endpoint_base;
+
+		if ($service == 'scheduleTasks') {
+			$service_endpoint .= 'schedule-tasks';
+		} else if ($service == 'destroyFiles') {
+			$service_endpoint .= 'destroy-files';
+		} else if ($service == 'getInfo') {
+			$service_endpoint .= 'get-info';
+		} else if ($service == 'listFiles') {
+			$service_endpoint .= 'list-files';
+		}
+
+		$this->post_fields = array('key'=>$this->sandcage_api_key) + $payload;
+
+		if ((($service == 'scheduleTasks') || ($service == 'destroyFiles')) && ($callback_endpoint != '')) {
+			$this->post_fields['callback_url'] = $callback_endpoint;
+		}
 
 		// Initialize the cURL session
 		$ch = curl_init($service_endpoint);
