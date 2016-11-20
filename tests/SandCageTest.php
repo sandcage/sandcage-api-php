@@ -10,14 +10,13 @@ class SandCageTest extends PHPUnit_Framework_TestCase {
 		$sandcage = new SandCage;
 		$sandcage->call('list-files', $payload);
 
-		$list_files_status = $sandcage->getHttpStatus();
-		$list_files_response = json_decode($sandcage->getResponse(), true);
+		$this_response = json_decode($sandcage->response, true);
 
-		$this->assertEquals($list_files_status["http_code"], 200);
+		$this->assertEquals($sandcage->status["http_code"], 200);
 
 		// The following are all expected to be false if the sandcage instance is initialized with a valid API key
 		$expected = array('request_id', 'status', 'error_msg');
-		foreach ($list_files_response as $key=>$value) {
+		foreach ($this_response as $key=>$value) {
 			$this->assertTrue(in_array($key, $expected));
 		}
 	}
@@ -29,14 +28,13 @@ class SandCageTest extends PHPUnit_Framework_TestCase {
 		$sandcage = new SandCage;
 		$sandcage->call('list-files', $payload);
 
-		$list_files_status = $sandcage->getHttpStatus();
-		$list_files_response = json_decode($sandcage->getResponse(), true);
+		$this_response = json_decode($sandcage->response, true);
 
-		$this->assertEquals($list_files_status["http_code"], 200);
+		$this->assertEquals($sandcage->status["http_code"], 200);
 
 		// The following are all expected to be false if the sandcage instance is initialized with a valid API key
 		$expected = array('request_id', 'status', 'error_msg');
-		foreach ($list_files_response as $key=>$value) {
+		foreach ($this_response as $key=>$value) {
 			$this->assertTrue(in_array($key, $expected));
 		}
 	}
@@ -49,14 +47,13 @@ class SandCageTest extends PHPUnit_Framework_TestCase {
 		$sandcage = new SandCage;
 		$sandcage->call('list-files', $payload);
 
-		$list_files_status = $sandcage->getHttpStatus();
-		$list_files_response = json_decode($sandcage->getResponse(), true);
+		$this_response = json_decode($sandcage->response, true);
 
-		$this->assertEquals($list_files_status["http_code"], 200);
+		$this->assertEquals($sandcage->status["http_code"], 200);
 
 		// The following are all expected to be false if the sandcage instance is initialized with a valid API key
 		$expected = array('request_id', 'status', 'error_msg');
-		foreach ($list_files_response as $key=>$value) {
+		foreach ($this_response as $key=>$value) {
 			$this->assertTrue(in_array($key, $expected));
 		}
 	}
@@ -68,14 +65,13 @@ class SandCageTest extends PHPUnit_Framework_TestCase {
 		$sandcage = new SandCage;
 		$sandcage->call('get-info', $payload);
 
-		$list_files_status = $sandcage->getHttpStatus();
-		$list_files_response = json_decode($sandcage->getResponse(), true);
+		$this_response = json_decode($sandcage->response, true);
 
-		$this->assertEquals($list_files_status["http_code"], 200);
+		$this->assertEquals($sandcage->status["http_code"], 200);
 
 		// The following are all expected to be false if the sandcage instance is initialized with a valid API key
 		$expected = array('request_id', 'status', 'error_msg');
-		foreach ($list_files_response as $key=>$value) {
+		foreach ($this_response as $key=>$value) {
 			$this->assertTrue(in_array($key, $expected));
 		}
 	}
@@ -91,14 +87,13 @@ class SandCageTest extends PHPUnit_Framework_TestCase {
 		$sandcage = new SandCage;
 		$sandcage->call('get-info', $payload);
 
-		$list_files_status = $sandcage->getHttpStatus();
-		$list_files_response = json_decode($sandcage->getResponse(), true);
+		$this_response = json_decode($sandcage->response, true);
 
-		$this->assertEquals($list_files_status["http_code"], 200);
+		$this->assertEquals($sandcage->status["http_code"], 200);
 
 		// The following are all expected to be false if the sandcage instance is initialized with a valid API key
 		$expected = array('request_id', 'status', 'error_msg');
-		foreach ($list_files_response as $key=>$value) {
+		foreach ($this_response as $key=>$value) {
 			$this->assertTrue(in_array($key, $expected));
 		}
 	}
@@ -149,14 +144,13 @@ class SandCageTest extends PHPUnit_Framework_TestCase {
 		$sandcage = new SandCage;
 		$sandcage->call('schedule-tasks', $payload);
 
-		$list_files_status = $sandcage->getHttpStatus();
-		$list_files_response = json_decode($sandcage->getResponse(), true);
+		$this_response = json_decode($sandcage->response, true);
 
-		$this->assertEquals($list_files_status["http_code"], 200);
+		$this->assertEquals($sandcage->status["http_code"], 200);
 
 		// The following are all expected to be false if the sandcage instance is initialized with a valid API key
 		$expected = array('request_id', 'status', 'error_msg');
-		foreach ($list_files_response as $key=>$value) {
+		foreach ($this_response as $key=>$value) {
 			$this->assertTrue(in_array($key, $expected));
 		}
 	}
@@ -171,14 +165,13 @@ class SandCageTest extends PHPUnit_Framework_TestCase {
 		$sandcage = new SandCage;
 		$sandcage->call('destroy-files', $payload);
 
-		$list_files_status = $sandcage->getHttpStatus();
-		$list_files_response = json_decode($sandcage->getResponse(), true);
+		$this_response = json_decode($sandcage->response, true);
 
-		$this->assertEquals($list_files_status["http_code"], 200);
+		$this->assertEquals($sandcage->status["http_code"], 200);
 
 		// The following are all expected to be false if the sandcage instance is initialized with a valid API key
 		$expected = array('request_id', 'status', 'error_msg');
-		foreach ($list_files_response as $key=>$value) {
+		foreach ($this_response as $key=>$value) {
 			$this->assertTrue(in_array($key, $expected));
 		}
 	}

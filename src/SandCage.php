@@ -14,8 +14,8 @@ class SandCage {
 	protected $follow_location = false;
 	protected $timeout = 30;
 	protected $post_fields;
-	protected $status;
-	protected $response;
+	public $status;
+	public $response;
 
 	public function __construct($sandcage_api_key = null) {
 		if (!is_null($sandcage_api_key)) {
@@ -36,9 +36,15 @@ class SandCage {
 	 * @param string $callback_endpoint to send the callback to. Optional
 	 */ 
 	public function call($service, $payload, $callback_endpoint = '') {
-		$service_endpoint = $this->sandcage_api_endpoint_base . $service;
 		$this->payloadArray($payload, $callback_endpoint);
+		$this->curlCall($this->sandcage_api_endpoint_base . $service);
+	}
 
+	/** 
+	 * Send a requst using cURL 
+	 * @param string $service_endpoint to request
+	 */ 
+	public function curlCall($service_endpoint) {
 		$ch = curl_init($service_endpoint);
 		curl_setopt($ch, CURLOPT_USERAGENT, $this->user_agent);
 		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, $this->follow_location);
@@ -47,16 +53,12 @@ class SandCage {
 		curl_setopt($ch, CURLOPT_POST, TRUE);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($this->post_fields));
 		$this->response = curl_exec($ch);
-
 		// Retry if certificates are missing.
 		if (curl_errno($ch) == CURLE_SSL_CACERT) {
-			// Set the pem file holding the CA Root Certificates to verify the peer with.
 			curl_setopt($ch, CURLOPT_CAINFO, dirname(__FILE__) . '/cacert.pem');
-			
 			// Retry execution after setting CURLOPT_CAINFO
 			$this->response = curl_exec($ch);
 		}
-
 		$this->status = curl_getinfo($ch);
 		curl_close($ch);
 	}
@@ -72,21 +74,5 @@ class SandCage {
 		if ($callback_endpoint != '') {
 			$this->post_fields['callback_url'] = $callback_endpoint;
 		}
-	}
-
-	/** 
-	 * Return the HTTP status of the call
-	 * @return array or FALSE on failure 
-	 */ 
-	public function getHttpStatus() {
-		return $this->status;
-	}
-
-	/** 
-	 * Return the HTTP status of the call
-	 * @return array or FALSE on failure  
-	 */ 
-	public function getResponse() {
-		return $this->response;
 	}
 }

@@ -51,11 +51,9 @@ $payload = array(
 
 $sandcage->call('schedule-tasks', $payload);
 // $sandcage->call('schedule-tasks', $payload, 'http://www.example.com/callback_url'); // Same call with the optional callback endpoint set
-$get_info_status = $sandcage->getHttpStatus();
-$get_info_response = $sandcage->getResponse();
 
-if ($get_info_status['http_code'] == 200) {
-	echo $get_info_response;
+if ($sandcage->status['http_code'] == 200) {
+	echo $sandcage->response;
 } else {
 	echo "An error occurred.";
 }

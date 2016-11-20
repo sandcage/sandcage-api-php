@@ -12,11 +12,9 @@ $payload = array(
 );
 
 $sandcage->call('list-files', $payload);
-$list_files_status = $sandcage->getHttpStatus();
-$list_files_response = $sandcage->getResponse();
 
-if ($list_files_status['http_code'] == 200) {
-	echo $list_files_response;
+if ($sandcage->status['http_code'] == 200) {
+	echo $sandcage->response;
 } else {
 	echo "An error occurred.";
 }

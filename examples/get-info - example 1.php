@@ -11,11 +11,9 @@ $payload = array(
 );
 
 $sandcage->call('get-info', $payload);
-$get_info_status = $sandcage->getHttpStatus();
-$get_info_response = $sandcage->getResponse();
 
-if ($get_info_status['http_code'] == 200) {
-	echo $get_info_response;
+if ($sandcage->status['http_code'] == 200) {
+	echo $sandcage->response;
 } else {
 	echo "An error occurred.";
 }
