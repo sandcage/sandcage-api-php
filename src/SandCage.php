@@ -39,11 +39,8 @@ class SandCage {
 	public function call($service, $payload, $callback_endpoint = '') {
 
 		$service_endpoint = $this->sandcage_api_endpoint_base . $service;
-		$this->post_fields = array('key'=>$this->sandcage_api_key) + $payload;
-
-		if ($callback_endpoint != '') {
-			$this->post_fields['callback_url'] = $callback_endpoint;
-		}
+		
+		$this->payloadArray($payload, $callback_endpoint);
 
 		// Initialize the cURL session
 		$ch = curl_init($service_endpoint);
@@ -79,6 +76,21 @@ class SandCage {
 
 		// Close the cURL session
 		curl_close($ch);
+
+	}
+
+	/** 
+	 * Build the payload array
+	 * @param array $payload values to send
+	 * @param string $callback_endpoint to send the callback to
+	 */ 
+	private function payloadArray($payload, $callback_endpoint) {
+
+		$this->post_fields = array('key'=>$this->sandcage_api_key) + $payload;
+
+		if ($callback_endpoint != '') {
+			$this->post_fields['callback_url'] = $callback_endpoint;
+		}
 
 	}
 
