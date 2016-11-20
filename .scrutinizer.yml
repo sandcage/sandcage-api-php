@@ -21,4 +21,6 @@ coding_style:
     indentation:
       general:
         use_tabs: true
-build: false
+build:
+  environment:
+    php: 5.5.25
