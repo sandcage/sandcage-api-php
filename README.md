@@ -3,7 +3,6 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/sandcage/sandcage-api-php/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/sandcage/sandcage-api-php/?branch=master)
 [![Build Status](https://travis-ci.org/sandcage/sandcage-api-php.svg?branch=master)](https://travis-ci.org/sandcage/sandcage-api-php)
 [![Latest Stable Version](https://poser.pugx.org/sandcage/sandcage-api-php/v/stable)](https://packagist.org/packages/sandcage/sandcage-api-php)
-[![Code Coverage](https://scrutinizer-ci.com/g/sandcage/sandcage-api-php/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/sandcage/sandcage-api-php/?branch=master)
 [![License](https://poser.pugx.org/sandcage/sandcage-api-php/license)](https://packagist.org/packages/sandcage/sandcage-api-php)
 
 sandcage-api-php is a PHP library for interfacing with SandCage's API. The API documentation can be found at https://www.sandcage.com/docs/0.2/
