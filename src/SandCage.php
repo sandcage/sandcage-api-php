@@ -21,6 +21,10 @@ class SandCage {
 		if (!is_null($sandcage_api_key)) {
 			$this->sandcage_api_key = $sandcage_api_key;
 		}
+		// Handle open_basedir & safe mode
+		if (!ini_get('safe_mode') && !ini_get('open_basedir')) {
+			$this->follow_location = true;
+		}
 		$this->sandcage_api_endpoint_base = 'https://api.sandcage.com/' . $this->sandcage_api_version . '/';
 		$this->user_agent = 'SandCage - ' . $this->sandcage_api_version;
 	}
@@ -35,10 +39,6 @@ class SandCage {
 		$service_endpoint = $this->sandcage_api_endpoint_base . $service;
 		$this->payloadArray($payload, $callback_endpoint);
 
-		// Handle open_basedir & safe mode
-		if (!ini_get('safe_mode') && !ini_get('open_basedir')) {
-			$this->follow_location = true;
-		}
 		$ch = curl_init($service_endpoint);
 		curl_setopt($ch, CURLOPT_USERAGENT, $this->user_agent);
 		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, $this->follow_location);
