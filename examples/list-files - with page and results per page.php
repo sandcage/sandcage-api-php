@@ -2,6 +2,8 @@
 
 include_once(dirname(dirname(__FILE__)) . '/src/SandCage.php');
 
+use SandCage\SandCage;
+
 $sandcage = new SandCage;
 
 $payload = array(

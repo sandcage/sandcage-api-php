@@ -1,5 +1,7 @@
 <?php 
 
+namespace SandCage;
+
 class SandCage {
 	// Your SandCage API Key
 	// This can be retrieved from https://www.sandcage.com/panel/api_key
