@@ -1,6 +1,8 @@
 <?php 
 include_once(dirname(dirname(__FILE__)) . '/src/SandCage.php');
 
+use SandCage\SandCage;
+
 class SandCageTest extends PHPUnit_Framework_TestCase {
 
 	public function testListFiles() {
